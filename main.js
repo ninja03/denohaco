@@ -5,6 +5,11 @@ import { Client } from "https://deno.land/x/mysql/mod.ts"
 class MyServer extends Server {
 
   async api(path, req) {
+    console.log("REDIS_HOST", Deno.env.get("REDIS_HOST"))
+    console.log("REDIS_PASS", Deno.env.get("REDIS_PASS"))
+    console.log("MYSQL_HOST", Deno.env.get("MYSQL_HOST"))
+    console.log("MYSQL_PASS", Deno.env.get("MYSQL_PASS"))
+
     switch (path) {
       case "/api/rcount": {
         const redis = await this.getRedis()
