@@ -30,9 +30,7 @@ class MyServer extends Server {
   async getRedis() {
     return await connect({
       hostname: Deno.env.get("REDIS_HOST") ?? "127.0.0.1",
-      port: 6379,
-      username: "admin",
-      password: Deno.env.get("REDIS_PASS")
+      port: 6379
     })
   }
 
