@@ -7,7 +7,8 @@ class MyServer extends Server {
     // Redis
     this.redis = await connect({
       hostname: Deno.env.get("REDIS_HOST") ?? "127.0.0.1",
-      port: 6379
+      port: 6379,
+      password: Deno.env.get("REDIS_PASS") ?? undefined,
     })
     let rcount = await this.redis.get("count")
     if (rcount != undefined) {
