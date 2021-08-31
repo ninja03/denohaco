@@ -1,4 +1,4 @@
-[Hacobune](https://www.sakura.ad.jp/information/announcements/2021/08/12/1968207782/)でDenoとRedisとMySQLを動かすサンプル
+さくらインターネットのPaaS [Hacobune](https://www.sakura.ad.jp/information/announcements/2021/08/12/1968207782/)でDenoとRedisとMySQLを動かすサンプル
 
 環境変数
 * REDIS_HOST: Redisのアドオン名
