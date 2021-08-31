@@ -46,8 +46,8 @@ class MyServer extends Server {
     return await new Client().connect({
       hostname: Deno.env.get("MYSQL_HOST") ?? "127.0.0.1",
       username: "root",
-      db: "counter",
-      password: Deno.env.get("MYSQL_PASS") ?? "pass",
+      db: "counter"
+      // password: Deno.env.get("MYSQL_PASS") ?? "pass",
     })
   }
 
