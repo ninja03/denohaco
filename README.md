@@ -14,8 +14,7 @@ CREATE TABLE click (
   PRIMARY KEY (id)
 );
 ```
-
-環境変数を設定
+3. 環境変数を設定
 * REDIS_HOST: Redisのアドオン名
 * MYSQL_HOST: MySQLのアドオン名
 * MYSQL_PASS: MySQLのパスワード
