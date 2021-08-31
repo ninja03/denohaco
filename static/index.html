@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Deno Count</title>
+    <link href="https://unpkg.com/tailwindcss@2.2.7/dist/tailwind.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+    <div x-data="app">
+      <button @click="clickR()" x-text="'Redis:' + rcount" class="bg-gray-200 text-black p-2 w-20 h-20"></button>
+      <button @click="clickM()" x-text="'MySQL:' + mcount" class="bg-gray-200 text-black p-2 w-20 h-20"></button>
+    </div>
+    <script type="module">
+      import Alpine from "https://unpkg.com/alpinejs@3.2.3/dist/module.esm.js"
+      import { fetchJSON } from "https://ninja03.github.io/denokun/lib/fetchJSON.js"
+
+      Alpine.data("app", () => ({
+        rcount: 0,
+        mcount: 0,
+        
+        async fetchAPI(path, req) {
+          return await fetchJSON(this.server + path, req)
+        },
+
+        async init() {
+          this.server = location.protocol + "//" + location.hostname
+          if (location.port != "") {
+            this.server += ":" + location.port
+          }
+          this.rcount = (await this.fetchAPI("/api/rcount", {})).count
+          this.mcount = (await this.fetchAPI("/api/mcount", {})).count
+        },
+
+        async clickR() {
+          await this.fetchAPI("/api/rup", {})
+          this.rcount = (await this.fetchAPI("/api/rcount", {})).count
+        },
+
+        async clickM() {
+          await this.fetchAPI("/api/mup", {})
+          this.mcount = (await this.fetchAPI("/api/mcount", {})).count
+        }
+      }))
+
+      Alpine.start()
+    </script>
+  </body>
+</html>

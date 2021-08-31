@@ -1,0 +1,9 @@
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "deno.enable": true,
+  "deno.suggest.imports.hosts": {
+    "https://deno.land": true
+  },
+}
